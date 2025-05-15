@@ -58,7 +58,9 @@ struct LoginView: View {
                         if !email.isEmpty && !password.isEmpty {
                             if AuthManager.shared.loginUser(email: email, password: password) {
                                 print("Login successful")
-                                isAuthenticated = true
+                                // Post notification that user logged in
+                                NotificationCenter.default.post(name: Notification.Name("UserLoggedIn"), object: nil)
+                                // No longer need to set isAuthenticated since we're using the notification system
                             } else {
                                 print("Login failed")
                                 alertMessage = "Invalid email or password"
@@ -124,7 +126,32 @@ struct LoginView: View {
             Alert(title: Text("Message"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
         .fullScreenCover(isPresented: $isAuthenticated) {
-            HomeView()
+            TabView {
+                // Home Tab
+                HomeView()
+                    .environment(\.managedObjectContext, viewContext)
+                    .tabItem {
+                        Label("Home", systemImage: "house.fill")
+                    }
+                    .tag(0)
+
+                // Health Tab
+                HealthView()
+                    .environment(\.managedObjectContext, viewContext)
+                    .tabItem {
+                        Label("Health", systemImage: "heart.fill")
+                    }
+                    .tag(1)
+
+                // Profile Tab
+                ProfileView()
+                    .environment(\.managedObjectContext, viewContext)
+                    .tabItem {
+                        Label("Profile", systemImage: "person.fill")
+                    }
+                    .tag(2)
+            }
+            .accentColor(.blue)
         }
         .onAppear {
             print("LoginView appeared")
