@@ -39,6 +39,10 @@
     <string>This app requires access to your health data to display and track your fitness information.</string>
     <key>NSHealthUpdateUsageDescription</key>
     <string>This app requires permission to save health data to your Health app.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>This app requires access to your camera to take photos of your meals.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>This app requires access to your photo library to select photos of your meals.</string>
     <key>UIBackgroundModes</key>
     <array>
         <string>fetch</string>

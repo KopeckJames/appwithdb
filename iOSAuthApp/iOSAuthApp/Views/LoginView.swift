@@ -143,13 +143,21 @@ struct LoginView: View {
                     }
                     .tag(1)
 
+                // Meal Log Tab
+                MealLogView()
+                    .environment(\.managedObjectContext, viewContext)
+                    .tabItem {
+                        Label("Meals", systemImage: "fork.knife")
+                    }
+                    .tag(2)
+
                 // Profile Tab
                 ProfileView()
                     .environment(\.managedObjectContext, viewContext)
                     .tabItem {
                         Label("Profile", systemImage: "person.fill")
                     }
-                    .tag(2)
+                    .tag(3)
             }
             .accentColor(.blue)
         }

@@ -19,6 +19,10 @@
 		1A2B3C4D5E6F7G8H9I0Z10 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z8 /* HealthKitManager.swift */; };
 		1A2B3C4D5E6F7G8H9I0Z11 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z5 /* HealthKit.framework */; };
 		1A2B3C4D5E6F7G8H9I0Z13 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z12 /* ProfileView.swift */; };
+		1A2B3C4D5E6F7G8H9I0Z18 /* MealLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z14 /* MealLogView.swift */; };
+		1A2B3C4D5E6F7G8H9I0Z19 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z15 /* AddMealView.swift */; };
+		1A2B3C4D5E6F7G8H9I0Z20 /* EditMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z16 /* EditMealView.swift */; };
+		1A2B3C4D5E6F7G8H9I0Z21 /* MealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z17 /* MealManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		1A2B3C4D5E6F7G8H9I0Z7 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I0Z8 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I0Z12 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F7G8H9I0Z14 /* MealLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealLogView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F7G8H9I0Z15 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F7G8H9I0Z16 /* EditMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMealView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F7G8H9I0Z17 /* MealManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealManager.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99F112F52DD5DCF800FB8FFD /* iOSAuthApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSAuthApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +115,9 @@
 				1A2B3C4D5E6F7G8H9I0S /* HomeView.swift */,
 				1A2B3C4D5E6F7G8H9I0Z7 /* HealthView.swift */,
 				1A2B3C4D5E6F7G8H9I0Z12 /* ProfileView.swift */,
+				1A2B3C4D5E6F7G8H9I0Z14 /* MealLogView.swift */,
+				1A2B3C4D5E6F7G8H9I0Z15 /* AddMealView.swift */,
+				1A2B3C4D5E6F7G8H9I0Z16 /* EditMealView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,6 +127,7 @@
 			children = (
 				1A2B3C4D5E6F7G8H9I0W /* AuthManager.swift */,
 				1A2B3C4D5E6F7G8H9I0Z8 /* HealthKitManager.swift */,
+				1A2B3C4D5E6F7G8H9I0Z17 /* MealManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -197,6 +209,10 @@
 				1A2B3C4D5E6F7G8H9I0Z9 /* HealthView.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0Z10 /* HealthKitManager.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0Z13 /* ProfileView.swift in Sources */,
+				1A2B3C4D5E6F7G8H9I0Z18 /* MealLogView.swift in Sources */,
+				1A2B3C4D5E6F7G8H9I0Z19 /* AddMealView.swift in Sources */,
+				1A2B3C4D5E6F7G8H9I0Z20 /* EditMealView.swift in Sources */,
+				1A2B3C4D5E6F7G8H9I0Z21 /* MealManager.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0J /* AuthApp.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0L /* AppDelegate.swift in Sources */,
 			);

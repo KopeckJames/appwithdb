@@ -47,13 +47,21 @@ struct AuthApp: App {
                             }
                             .tag(1)
 
+                        // Meal Log Tab
+                        MealLogView()
+                            .environment(\.managedObjectContext, coreDataStack.viewContext)
+                            .tabItem {
+                                Label("Meals", systemImage: "fork.knife")
+                            }
+                            .tag(2)
+
                         // Profile Tab
                         ProfileView()
                             .environment(\.managedObjectContext, coreDataStack.viewContext)
                             .tabItem {
                                 Label("Profile", systemImage: "person.fill")
                             }
-                            .tag(2)
+                            .tag(3)
                     }
                     .accentColor(.blue)
                     .onAppear {
