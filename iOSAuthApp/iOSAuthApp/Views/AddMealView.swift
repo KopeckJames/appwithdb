@@ -1,6 +1,8 @@
+
 import SwiftUI
 import UIKit
 import CoreData
+import Combine
 
 struct AddMealView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -20,6 +22,9 @@ struct AddMealView: View {
     @State private var showingAddFoodItem = false
     @State private var showingAlert = false
     @State private var alertMessage = ""
+    @State private var isAnalyzingImage = false
+    @State private var analysisState: MealManager.AnalysisState = .notStarted
+    @State private var mealAnalysis: MealAnalysis?
 
     // Meal type options
     let mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack"]
@@ -31,12 +36,24 @@ struct AddMealView: View {
                 Section(header: Text("Photo")) {
                     VStack {
                         if let image = selectedImage {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxHeight: 200)
-                                .cornerRadius(8)
-                                .padding(.vertical, 8)
+                            ZStack(alignment: .topTrailing) {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxHeight: 200)
+                                    .cornerRadius(8)
+                                    .padding(.vertical, 8)
+
+                                if isAnalyzingImage {
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle())
+                                        .scaleEffect(1.5)
+                                        .padding()
+                                        .background(Color.white.opacity(0.7))
+                                        .cornerRadius(8)
+                                        .padding(8)
+                                }
+                            }
                         } else {
                             Image(systemName: "photo")
                                 .resizable()
@@ -46,15 +63,80 @@ struct AddMealView: View {
                                 .padding(.vertical, 20)
                         }
 
-                        Button(action: {
-                            showingImageOptions = true
-                        }) {
-                            Text(selectedImage == nil ? "Add Photo" : "Change Photo")
-                                .foregroundColor(.blue)
+                        HStack {
+                            Button(action: {
+                                showingImageOptions = true
+                            }) {
+                                Text(selectedImage == nil ? "Add Photo" : "Change Photo")
+                                    .foregroundColor(.blue)
+                            }
+
+                            if selectedImage != nil && !isAnalyzingImage {
+                                Spacer()
+                                Button(action: {
+                                    analyzeImage()
+                                }) {
+                                    Text("Reanalyze")
+                                        .foregroundColor(.green)
+                                }
+                            }
                         }
                         .padding(.bottom, 8)
                     }
                     .frame(maxWidth: .infinity)
+                }
+
+                // Analysis results section (only shown when analysis is complete)
+                if case .completed(let analysis) = analysisState {
+                    Section(header: Text("Analysis Results")) {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Ingredients Detected:")
+                                .font(.headline)
+
+                            ForEach(analysis.ingredients, id: \.self) { ingredient in
+                                Text("• \(ingredient)")
+                                    .font(.subheadline)
+                            }
+
+                            Divider()
+
+                            HStack {
+                                Text("Estimated Calories:")
+                                    .font(.headline)
+                                Spacer()
+                                Text("\(Int(analysis.calories)) kcal")
+                                    .foregroundColor(.orange)
+                                    .fontWeight(.bold)
+                            }
+
+                            HStack {
+                                Text("Glycemic Index:")
+                                    .font(.headline)
+                                Spacer()
+                                Text(analysis.glycemicIndex)
+                                    .foregroundColor(glycemicColor(for: analysis.glycemicIndex))
+                                    .fontWeight(.bold)
+                            }
+
+                            HStack {
+                                Text("Diabetic Friendly:")
+                                    .font(.headline)
+                                Spacer()
+                                Text(analysis.diabeticFriendly ? "Yes" : "No")
+                                    .foregroundColor(analysis.diabeticFriendly ? .green : .red)
+                                    .fontWeight(.bold)
+                            }
+
+                            Divider()
+
+                            Text("Health Recommendations:")
+                                .font(.headline)
+                            Text(analysis.healthRecommendations)
+                                .font(.subheadline)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        .padding(.vertical, 8)
+                    }
                 }
 
                 // Meal details section
@@ -71,15 +153,64 @@ struct AddMealView: View {
                         .disabled(true) // Using current date/time
                 }
 
-                // Notes section
-                Section(header: Text("Notes")) {
-                    TextEditor(text: $notes)
-                        .frame(minHeight: 100)
+                // Notes section (hidden if analysis results are shown)
+                if mealAnalysis == nil || isAnalyzingImage {
+                    Section(header: Text("Notes")) {
+                        TextEditor(text: $notes)
+                            .frame(minHeight: 100)
+                    }
+                }
+
+                // Analysis Results Section (only shown if analysis has been completed)
+                if let analysis = mealAnalysis, selectedImage != nil && !isAnalyzingImage {
+                    Section(header: Text("Analysis Results")) {
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack {
+                                Text("Glycemic Index:")
+                                    .fontWeight(.medium)
+                                Spacer()
+                                Text(analysis.glycemicIndex)
+                                    .foregroundColor(glycemicColor(for: analysis.glycemicIndex))
+                                    .fontWeight(.bold)
+                            }
+
+                            HStack {
+                                Text("Diabetic Friendly:")
+                                    .fontWeight(.medium)
+                                Spacer()
+                                Text(analysis.diabeticFriendly ? "Yes" : "No")
+                                    .foregroundColor(analysis.diabeticFriendly ? .green : .red)
+                                    .fontWeight(.bold)
+                            }
+
+                            Text("Health Recommendations:")
+                                .fontWeight(.medium)
+                                .padding(.top, 4)
+
+                            Text(analysis.healthRecommendations)
+                                .font(.body)
+                                .foregroundColor(.primary)
+                                .padding(.top, 2)
+                        }
+                        .padding(.vertical, 8)
+
+                        Button(action: {
+                            analyzeImage()
+                        }) {
+                            HStack {
+                                Image(systemName: "arrow.clockwise")
+                                Text("Reanalyze")
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 8)
+                        }
+                        .buttonStyle(BorderedButtonStyle())
+                    }
                 }
 
                 // Food items section
                 Section(header: HStack {
-                    Text("Food Items")
+                    Text("Ingredients")
                     Spacer()
                     Button(action: {
                         showingAddFoodItem = true
@@ -88,8 +219,20 @@ struct AddMealView: View {
                             .foregroundColor(.blue)
                     }
                 }) {
-                    if foodItems.isEmpty {
-                        Text("No food items added")
+                    if isAnalyzingImage {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                            Text("Analyzing image...")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .padding(.leading, 8)
+                            Spacer()
+                        }
+                        .padding(.vertical, 10)
+                    } else if foodItems.isEmpty {
+                        Text("No ingredients added")
                             .foregroundColor(.gray)
                             .italic()
                     } else {
@@ -161,10 +304,22 @@ struct AddMealView: View {
                 )
             }
             .sheet(isPresented: $showingImagePicker) {
-                ImagePicker(selectedImage: $selectedImage, sourceType: .photoLibrary)
+                ImagePicker(
+                    selectedImage: $selectedImage,
+                    sourceType: .photoLibrary,
+                    onImageSelected: {
+                        analyzeImage()
+                    }
+                )
             }
             .sheet(isPresented: $showingCamera) {
-                ImagePicker(selectedImage: $selectedImage, sourceType: .camera)
+                ImagePicker(
+                    selectedImage: $selectedImage,
+                    sourceType: .camera,
+                    onImageSelected: {
+                        analyzeImage()
+                    }
+                )
             }
             .sheet(isPresented: $showingAddFoodItem) {
                 AddFoodItemView(onAdd: { foodItem in
@@ -210,20 +365,137 @@ struct AddMealView: View {
             return
         }
 
-        let success = MealManager.shared.createMeal(
-            title: title,
-            mealType: mealType,
-            notes: notes,
-            photo: selectedImage,
-            foodItems: foodItems,
-            context: viewContext
-        )
-
-        if success {
-            presentationMode.wrappedValue.dismiss()
+        // If we have analysis results, use the createMealWithAnalysis method
+        if case .completed(let analysis) = analysisState {
+            MealManager.shared.createMealWithAnalysis(
+                title: title,
+                mealType: mealType,
+                notes: notes,
+                photo: selectedImage,
+                context: viewContext,
+                analyzeImage: false
+            ) { meal, state in
+                if let meal = meal {
+                    // Update the meal with the analysis results
+                    meal.updateWithAnalysis(analysis, context: viewContext)
+                    presentationMode.wrappedValue.dismiss()
+                } else {
+                    alertMessage = "Failed to save meal. Please try again."
+                    showingAlert = true
+                }
+            }
         } else {
-            alertMessage = "Failed to save meal. Please try again."
+            // Use the regular createMeal method if no analysis was performed
+            let success = MealManager.shared.createMeal(
+                title: title,
+                mealType: mealType,
+                notes: notes,
+                photo: selectedImage,
+                foodItems: foodItems,
+                context: viewContext
+            )
+
+            if success {
+                presentationMode.wrappedValue.dismiss()
+            } else {
+                alertMessage = "Failed to save meal. Please try again."
+                showingAlert = true
+            }
+        }
+    }
+
+    // Analyze the meal image
+    private func analyzeImage() {
+        guard let image = selectedImage else {
+            alertMessage = "Please select an image to analyze"
             showingAlert = true
+            return
+        }
+
+        isAnalyzingImage = true
+        analysisState = .analyzing
+
+        // Call OpenAI service to analyze the image
+        OpenAIService.shared.analyzeMealImage(image: image) { result in
+            DispatchQueue.main.async {
+                isAnalyzingImage = false
+
+                switch result {
+                case .success(let analysis):
+                    self.analysisState = .completed(analysis)
+                    self.mealAnalysis = analysis
+
+                    // Update food items based on analysis
+                    self.updateFoodItemsFromAnalysis(analysis)
+
+                case .failure(let error):
+                    self.analysisState = .failed(error)
+                    self.alertMessage = "Failed to analyze image: \(error.localizedDescription)"
+                    self.showingAlert = true
+                }
+            }
+        }
+    }
+
+    // Update food items based on analysis results
+    private func updateFoodItemsFromAnalysis(_ analysis: MealAnalysis) {
+        // Clear existing food items
+        foodItems.removeAll()
+
+        // Set the meal title if it's empty
+        if title.isEmpty {
+            title = "Analyzed Meal"
+        }
+
+        // Create individual food items for each ingredient
+        if !analysis.ingredients.isEmpty {
+            // Calculate approximate distribution of macros per ingredient
+            let ingredientCount = Double(analysis.ingredients.count)
+            let caloriesPerItem = analysis.calories / ingredientCount
+            let proteinPerItem = analysis.protein / ingredientCount
+            let carbsPerItem = analysis.carbs / ingredientCount
+            let fatPerItem = analysis.fat / ingredientCount
+
+            // Add each ingredient as a separate food item
+            for ingredient in analysis.ingredients {
+                let foodItem = FoodItemData(
+                    name: ingredient,
+                    calories: caloriesPerItem,
+                    protein: proteinPerItem,
+                    carbs: carbsPerItem,
+                    fat: fatPerItem,
+                    servingSize: "1 serving"
+                )
+                foodItems.append(foodItem)
+            }
+        } else {
+            // If no ingredients were detected, create a single food item
+            let foodItem = FoodItemData(
+                name: "Analyzed Meal",
+                calories: analysis.calories,
+                protein: analysis.protein,
+                carbs: analysis.carbs,
+                fat: analysis.fat,
+                servingSize: "1 serving"
+            )
+            foodItems.append(foodItem)
+        }
+
+        // We no longer need to add analysis results to notes
+        // as they are displayed in their own section
+    }
+
+    // Get color for glycemic index
+    private func glycemicColor(for index: String) -> Color {
+        switch index.lowercased() {
+        case "low":
+            return .green
+        case "medium":
+            return .orange
+        case "high":
+            return .red
+        default:
+            return .gray
         }
     }
 }
@@ -233,6 +505,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
     var sourceType: UIImagePickerController.SourceType
     @Environment(\.presentationMode) private var presentationMode
+    var onImageSelected: (() -> Void)?
 
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
@@ -263,6 +536,11 @@ struct ImagePicker: UIViewControllerRepresentable {
             }
 
             parent.presentationMode.wrappedValue.dismiss()
+
+            // Trigger image analysis after selection
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.parent.onImageSelected?()
+            }
         }
 
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

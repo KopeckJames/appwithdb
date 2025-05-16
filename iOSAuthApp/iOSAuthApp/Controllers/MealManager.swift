@@ -1,10 +1,23 @@
+
 import Foundation
 import CoreData
 import UIKit
 import SwiftUI
+import Combine
 
 class MealManager {
     static let shared = MealManager()
+
+    // Publishers for async operations
+    private var cancellables = Set<AnyCancellable>()
+
+    // Analysis state
+    enum AnalysisState {
+        case notStarted
+        case analyzing
+        case completed(MealAnalysis)
+        case failed(Error)
+    }
 
     private init() {
         print("MealManager initialized")
@@ -165,6 +178,105 @@ class MealManager {
         } catch {
             print("Error fetching meals for date: \(error)")
             return []
+        }
+    }
+
+    // MARK: - Meal Analysis
+
+    /// Analyze a meal image using OpenAI's vision API
+    /// - Parameters:
+    ///   - meal: The meal to analyze
+    ///   - context: The managed object context
+    ///   - completion: Callback with success status and optional error
+    func analyzeMealImage(meal: Meal, context: NSManagedObjectContext, completion: @escaping (Bool, Error?) -> Void) {
+        guard let image = meal.image else {
+            completion(false, NSError(domain: "com.meal.error", code: 0, userInfo: [NSLocalizedDescriptionKey: "No image available for analysis"]))
+            return
+        }
+
+        // Call OpenAI service to analyze the image
+        OpenAIService.shared.analyzeMealImage(image: image) { result in
+            switch result {
+            case .success(let analysis):
+                // Update meal with analysis results
+                meal.updateWithAnalysis(analysis, context: context)
+                completion(true, nil)
+
+            case .failure(let error):
+                print("Error analyzing meal image: \(error)")
+                completion(false, error)
+            }
+        }
+    }
+
+    /// Create a meal with image analysis
+    /// - Parameters:
+    ///   - title: The meal title
+    ///   - mealType: The type of meal (breakfast, lunch, dinner, snack)
+    ///   - notes: Additional notes about the meal
+    ///   - photo: The meal photo
+    ///   - context: The managed object context
+    ///   - analyzeImage: Whether to analyze the image
+    ///   - completion: Callback with the created meal and analysis state
+    func createMealWithAnalysis(
+        title: String,
+        mealType: String,
+        notes: String,
+        photo: UIImage?,
+        context: NSManagedObjectContext,
+        analyzeImage: Bool = false,
+        completion: @escaping (Meal?, AnalysisState) -> Void
+    ) {
+        // First create the meal
+        let meal = NSEntityDescription.insertNewObject(forEntityName: "Meal", into: context) as! Meal
+
+        meal.id = UUID()
+        meal.title = title
+        meal.mealType = mealType
+        meal.notes = notes
+        meal.date = Date()
+        meal.totalCalories = 0.0
+
+        // Save photo if available
+        if let photo = photo {
+            if let imageData = photo.jpegData(compressionQuality: 0.7) {
+                meal.photoData = imageData
+            }
+        }
+
+        // Associate with current user
+        if let currentUser = AuthManager.shared.currentUser as? User {
+            meal.user = currentUser
+        }
+
+        // Save the meal
+        do {
+            try context.save()
+            print("Meal created successfully")
+
+            // If analyze image is requested and we have a photo
+            if analyzeImage, let photo = photo {
+                completion(meal, .analyzing)
+
+                // Analyze the image
+                OpenAIService.shared.analyzeMealImage(image: photo) { result in
+                    switch result {
+                    case .success(let analysis):
+                        // Update meal with analysis results
+                        meal.updateWithAnalysis(analysis, context: context)
+                        completion(meal, .completed(analysis))
+
+                    case .failure(let error):
+                        print("Error analyzing meal image: \(error)")
+                        completion(meal, .failed(error))
+                    }
+                }
+            } else {
+                completion(meal, .notStarted)
+            }
+        } catch {
+            print("Error saving meal: \(error)")
+            completion(nil, .failed(error))
         }
     }
 }

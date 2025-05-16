@@ -23,7 +23,11 @@
 		1A2B3C4D5E6F7G8H9I0Z20 /* EditMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z16 /* EditMealView.swift */; };
 		1A2B3C4D5E6F7G8H9I0Z21 /* MealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z17 /* MealManager.swift */; };
 		1A2B3C4D5E6F7G8H9I0Z9 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z7 /* HealthView.swift */; };
-		99F112FC2DD6B5C200FB8FFD /* Images.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 99F112FB2DD6B5B500FB8FFD /* Images.xcassets */; };
+		9996ADCA2DD6CA4000B8054C /* CoreDataModelUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9996ADC82DD6CA4000B8054C /* CoreDataModelUpdater.swift */; };
+		9996ADCB2DD6CA4000B8054C /* CoreDataMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9996ADC72DD6CA4000B8054C /* CoreDataMigration.swift */; };
+		9996ADCC2DD6CA4000B8054C /* MealExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9996ADC92DD6CA4000B8054C /* MealExtensions.swift */; };
+		9996ADCE2DD6CA5000B8054C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9996ADCD2DD6CA5000B8054C /* MainTabView.swift */; };
+		9996ADD22DD6CD8300B8054C /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9996ADD12DD6CD8300B8054C /* OpenAIService.swift */; };
 		99F113102DD6B6C400FB8FFD /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F113092DD6B6C400FB8FFD /* Icon-40@3x.png */; };
 		99F113112DD6B6C400FB8FFD /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F113082DD6B6C400FB8FFD /* Icon-40@2x.png */; };
 		99F113122DD6B6C400FB8FFD /* Icon-20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F113032DD6B6C400FB8FFD /* Icon-20@3x.png */; };
@@ -61,8 +65,12 @@
 		1A2B3C4D5E6F7G8H9I0Z7 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I0Z8 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9996ADC72DD6CA4000B8054C /* CoreDataMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMigration.swift; sourceTree = "<group>"; };
+		9996ADC82DD6CA4000B8054C /* CoreDataModelUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModelUpdater.swift; sourceTree = "<group>"; };
+		9996ADC92DD6CA4000B8054C /* MealExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealExtensions.swift; sourceTree = "<group>"; };
+		9996ADCD2DD6CA5000B8054C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		9996ADD12DD6CD8300B8054C /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		99F112F52DD5DCF800FB8FFD /* iOSAuthApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSAuthApp.entitlements; sourceTree = "<group>"; };
-		99F112FB2DD6B5B500FB8FFD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = text; path = Images.xcassets; sourceTree = "<group>"; };
 		99F113012DD6B6C400FB8FFD /* Icon-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-20.png"; sourceTree = "<group>"; };
 		99F113022DD6B6C400FB8FFD /* Icon-20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-20@2x.png"; sourceTree = "<group>"; };
 		99F113032DD6B6C400FB8FFD /* Icon-20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-20@3x.png"; sourceTree = "<group>"; };
@@ -116,7 +124,6 @@
 				99F112F52DD5DCF800FB8FFD /* iOSAuthApp.entitlements */,
 				1A2B3C4D5E6F7G8H9I0K /* AuthApp.swift */,
 				1A2B3C4D5E6F7G8H9I0M /* AppDelegate.swift */,
-				99F112FB2DD6B5B500FB8FFD /* Images.xcassets */,
 				99F113012DD6B6C400FB8FFD /* Icon-20.png */,
 				99F113022DD6B6C400FB8FFD /* Icon-20@2x.png */,
 				99F113032DD6B6C400FB8FFD /* Icon-20@3x.png */,
@@ -137,6 +144,7 @@
 				1A2B3C4D5E6F7G8H9I19 /* Controllers */,
 				1A2B3C4D5E6F7G8H9I10 /* Info.plist */,
 				99F1131F2DD6BB1000FB8FFD /* Assets.xcassets */,
+				9996ADD02DD6CA8500B8054C /* Services */,
 			);
 			path = iOSAuthApp;
 			sourceTree = "<group>";
@@ -152,6 +160,9 @@
 		1A2B3C4D5E6F7G8H9I17 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9996ADC72DD6CA4000B8054C /* CoreDataMigration.swift */,
+				9996ADC82DD6CA4000B8054C /* CoreDataModelUpdater.swift */,
+				9996ADC92DD6CA4000B8054C /* MealExtensions.swift */,
 				1A2B3C4D5E6F7G8H9I0Y /* AuthModel.xcdatamodeld */,
 				1A2B3C4D5E6F7G8H9I0Z1 /* CoreDataStack.swift */,
 			);
@@ -161,6 +172,7 @@
 		1A2B3C4D5E6F7G8H9I18 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9996ADCD2DD6CA5000B8054C /* MainTabView.swift */,
 				1A2B3C4D5E6F7G8H9I0O /* LoginView.swift */,
 				1A2B3C4D5E6F7G8H9I0Q /* RegisterView.swift */,
 				1A2B3C4D5E6F7G8H9I0S /* HomeView.swift */,
@@ -181,6 +193,14 @@
 				1A2B3C4D5E6F7G8H9I0Z17 /* MealManager.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9996ADD02DD6CA8500B8054C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9996ADD12DD6CD8300B8054C /* OpenAIService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,10 +288,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A2B3C4D5E6F7G8H9I0N /* LoginView.swift in Sources */,
+				9996ADCA2DD6CA4000B8054C /* CoreDataModelUpdater.swift in Sources */,
+				9996ADCB2DD6CA4000B8054C /* CoreDataMigration.swift in Sources */,
+				9996ADCC2DD6CA4000B8054C /* MealExtensions.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0P /* RegisterView.swift in Sources */,
-				99F112FC2DD6B5C200FB8FFD /* Images.xcassets in Sources */,
 				1A2B3C4D5E6F7G8H9I0R /* HomeView.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0V /* AuthManager.swift in Sources */,
+				9996ADD22DD6CD8300B8054C /* OpenAIService.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0X /* AuthModel.xcdatamodeld in Sources */,
 				1A2B3C4D5E6F7G8H9I0Z2 /* CoreDataStack.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0Z9 /* HealthView.swift in Sources */,
@@ -283,6 +306,7 @@
 				1A2B3C4D5E6F7G8H9I0Z21 /* MealManager.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0J /* AuthApp.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0L /* AppDelegate.swift in Sources */,
+				9996ADCE2DD6CA5000B8054C /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +440,7 @@
 				CODE_SIGN_ENTITLEMENTS = iOSAuthApp/iOSAuthApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = iOSAuthApp/Images.xcassets;
+				DEVELOPMENT_ASSET_PATHS = iOSAuthApp/Assets.xcassets;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSAuthApp/Info.plist;
@@ -449,7 +473,7 @@
 				CODE_SIGN_ENTITLEMENTS = iOSAuthApp/iOSAuthApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = iOSAuthApp/Images.xcassets;
+				DEVELOPMENT_ASSET_PATHS = iOSAuthApp/Assets.xcassets;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSAuthApp/Info.plist;
