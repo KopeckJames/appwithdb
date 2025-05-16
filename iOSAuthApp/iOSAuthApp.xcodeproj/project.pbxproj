@@ -14,15 +14,32 @@
 		1A2B3C4D5E6F7G8H9I0R /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0S /* HomeView.swift */; };
 		1A2B3C4D5E6F7G8H9I0V /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0W /* AuthManager.swift */; };
 		1A2B3C4D5E6F7G8H9I0X /* AuthModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Y /* AuthModel.xcdatamodeld */; };
-		1A2B3C4D5E6F7G8H9I0Z2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z1 /* CoreDataStack.swift */; };
-		1A2B3C4D5E6F7G8H9I0Z9 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z7 /* HealthView.swift */; };
 		1A2B3C4D5E6F7G8H9I0Z10 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z8 /* HealthKitManager.swift */; };
 		1A2B3C4D5E6F7G8H9I0Z11 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z5 /* HealthKit.framework */; };
 		1A2B3C4D5E6F7G8H9I0Z13 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z12 /* ProfileView.swift */; };
 		1A2B3C4D5E6F7G8H9I0Z18 /* MealLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z14 /* MealLogView.swift */; };
 		1A2B3C4D5E6F7G8H9I0Z19 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z15 /* AddMealView.swift */; };
+		1A2B3C4D5E6F7G8H9I0Z2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z1 /* CoreDataStack.swift */; };
 		1A2B3C4D5E6F7G8H9I0Z20 /* EditMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z16 /* EditMealView.swift */; };
 		1A2B3C4D5E6F7G8H9I0Z21 /* MealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z17 /* MealManager.swift */; };
+		1A2B3C4D5E6F7G8H9I0Z9 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7G8H9I0Z7 /* HealthView.swift */; };
+		99F112FC2DD6B5C200FB8FFD /* Images.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 99F112FB2DD6B5B500FB8FFD /* Images.xcassets */; };
+		99F113102DD6B6C400FB8FFD /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F113092DD6B6C400FB8FFD /* Icon-40@3x.png */; };
+		99F113112DD6B6C400FB8FFD /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F113082DD6B6C400FB8FFD /* Icon-40@2x.png */; };
+		99F113122DD6B6C400FB8FFD /* Icon-20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F113032DD6B6C400FB8FFD /* Icon-20@3x.png */; };
+		99F113132DD6B6C400FB8FFD /* Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F113052DD6B6C400FB8FFD /* Icon-29@2x.png */; };
+		99F113142DD6B6C400FB8FFD /* Icon-83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F1130E2DD6B6C400FB8FFD /* Icon-83.5@2x.png */; };
+		99F113152DD6B6C400FB8FFD /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F113042DD6B6C400FB8FFD /* Icon-29.png */; };
+		99F113162DD6B6C400FB8FFD /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F1130B2DD6B6C400FB8FFD /* Icon-60@3x.png */; };
+		99F113172DD6B6C400FB8FFD /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F1130D2DD6B6C400FB8FFD /* Icon-76@2x.png */; };
+		99F113182DD6B6C400FB8FFD /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F1130C2DD6B6C400FB8FFD /* Icon-76.png */; };
+		99F113192DD6B6C400FB8FFD /* Icon-20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F113022DD6B6C400FB8FFD /* Icon-20@2x.png */; };
+		99F1131A2DD6B6C400FB8FFD /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F113072DD6B6C400FB8FFD /* Icon-40.png */; };
+		99F1131B2DD6B6C400FB8FFD /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F1130A2DD6B6C400FB8FFD /* Icon-60@2x.png */; };
+		99F1131C2DD6B6C400FB8FFD /* Icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F1130F2DD6B6C400FB8FFD /* Icon-1024.png */; };
+		99F1131D2DD6B6C400FB8FFD /* Icon-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F113012DD6B6C400FB8FFD /* Icon-20.png */; };
+		99F1131E2DD6B6C400FB8FFD /* Icon-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99F113062DD6B6C400FB8FFD /* Icon-29@3x.png */; };
+		99F113202DD6BB1000FB8FFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F1131F2DD6BB1000FB8FFD /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,16 +52,33 @@
 		1A2B3C4D5E6F7G8H9I0W /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I0Z /* AuthModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AuthModel.xcdatamodel; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I0Z1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F7G8H9I0Z5 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		1A2B3C4D5E6F7G8H9I0Z7 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F7G8H9I0Z8 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I0Z12 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I0Z14 /* MealLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealLogView.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I0Z15 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I0Z16 /* EditMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMealView.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I0Z17 /* MealManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealManager.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F7G8H9I0Z5 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		1A2B3C4D5E6F7G8H9I0Z7 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F7G8H9I0Z8 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7G8H9I10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99F112F52DD5DCF800FB8FFD /* iOSAuthApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSAuthApp.entitlements; sourceTree = "<group>"; };
+		99F112FB2DD6B5B500FB8FFD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = text; path = Images.xcassets; sourceTree = "<group>"; };
+		99F113012DD6B6C400FB8FFD /* Icon-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-20.png"; sourceTree = "<group>"; };
+		99F113022DD6B6C400FB8FFD /* Icon-20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-20@2x.png"; sourceTree = "<group>"; };
+		99F113032DD6B6C400FB8FFD /* Icon-20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-20@3x.png"; sourceTree = "<group>"; };
+		99F113042DD6B6C400FB8FFD /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
+		99F113052DD6B6C400FB8FFD /* Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29@2x.png"; sourceTree = "<group>"; };
+		99F113062DD6B6C400FB8FFD /* Icon-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29@3x.png"; sourceTree = "<group>"; };
+		99F113072DD6B6C400FB8FFD /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
+		99F113082DD6B6C400FB8FFD /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
+		99F113092DD6B6C400FB8FFD /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@3x.png"; sourceTree = "<group>"; };
+		99F1130A2DD6B6C400FB8FFD /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
+		99F1130B2DD6B6C400FB8FFD /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
+		99F1130C2DD6B6C400FB8FFD /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		99F1130D2DD6B6C400FB8FFD /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
+		99F1130E2DD6B6C400FB8FFD /* Icon-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-83.5@2x.png"; sourceTree = "<group>"; };
+		99F1130F2DD6B6C400FB8FFD /* Icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-1024.png"; sourceTree = "<group>"; };
+		99F1131F2DD6BB1000FB8FFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,10 +116,27 @@
 				99F112F52DD5DCF800FB8FFD /* iOSAuthApp.entitlements */,
 				1A2B3C4D5E6F7G8H9I0K /* AuthApp.swift */,
 				1A2B3C4D5E6F7G8H9I0M /* AppDelegate.swift */,
+				99F112FB2DD6B5B500FB8FFD /* Images.xcassets */,
+				99F113012DD6B6C400FB8FFD /* Icon-20.png */,
+				99F113022DD6B6C400FB8FFD /* Icon-20@2x.png */,
+				99F113032DD6B6C400FB8FFD /* Icon-20@3x.png */,
+				99F113042DD6B6C400FB8FFD /* Icon-29.png */,
+				99F113052DD6B6C400FB8FFD /* Icon-29@2x.png */,
+				99F113062DD6B6C400FB8FFD /* Icon-29@3x.png */,
+				99F113072DD6B6C400FB8FFD /* Icon-40.png */,
+				99F113082DD6B6C400FB8FFD /* Icon-40@2x.png */,
+				99F113092DD6B6C400FB8FFD /* Icon-40@3x.png */,
+				99F1130A2DD6B6C400FB8FFD /* Icon-60@2x.png */,
+				99F1130B2DD6B6C400FB8FFD /* Icon-60@3x.png */,
+				99F1130C2DD6B6C400FB8FFD /* Icon-76.png */,
+				99F1130D2DD6B6C400FB8FFD /* Icon-76@2x.png */,
+				99F1130E2DD6B6C400FB8FFD /* Icon-83.5@2x.png */,
+				99F1130F2DD6B6C400FB8FFD /* Icon-1024.png */,
 				1A2B3C4D5E6F7G8H9I17 /* Models */,
 				1A2B3C4D5E6F7G8H9I18 /* Views */,
 				1A2B3C4D5E6F7G8H9I19 /* Controllers */,
 				1A2B3C4D5E6F7G8H9I10 /* Info.plist */,
+				99F1131F2DD6BB1000FB8FFD /* Assets.xcassets */,
 			);
 			path = iOSAuthApp;
 			sourceTree = "<group>";
@@ -190,6 +241,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99F113102DD6B6C400FB8FFD /* Icon-40@3x.png in Resources */,
+				99F113112DD6B6C400FB8FFD /* Icon-40@2x.png in Resources */,
+				99F113122DD6B6C400FB8FFD /* Icon-20@3x.png in Resources */,
+				99F113132DD6B6C400FB8FFD /* Icon-29@2x.png in Resources */,
+				99F113142DD6B6C400FB8FFD /* Icon-83.5@2x.png in Resources */,
+				99F113152DD6B6C400FB8FFD /* Icon-29.png in Resources */,
+				99F113162DD6B6C400FB8FFD /* Icon-60@3x.png in Resources */,
+				99F113172DD6B6C400FB8FFD /* Icon-76@2x.png in Resources */,
+				99F113182DD6B6C400FB8FFD /* Icon-76.png in Resources */,
+				99F113192DD6B6C400FB8FFD /* Icon-20@2x.png in Resources */,
+				99F1131A2DD6B6C400FB8FFD /* Icon-40.png in Resources */,
+				99F1131B2DD6B6C400FB8FFD /* Icon-60@2x.png in Resources */,
+				99F1131C2DD6B6C400FB8FFD /* Icon-1024.png in Resources */,
+				99F1131D2DD6B6C400FB8FFD /* Icon-20.png in Resources */,
+				99F113202DD6BB1000FB8FFD /* Assets.xcassets in Resources */,
+				99F1131E2DD6B6C400FB8FFD /* Icon-29@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +269,7 @@
 			files = (
 				1A2B3C4D5E6F7G8H9I0N /* LoginView.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0P /* RegisterView.swift in Sources */,
+				99F112FC2DD6B5C200FB8FFD /* Images.xcassets in Sources */,
 				1A2B3C4D5E6F7G8H9I0R /* HomeView.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0V /* AuthManager.swift in Sources */,
 				1A2B3C4D5E6F7G8H9I0X /* AuthModel.xcdatamodeld in Sources */,
@@ -348,7 +416,7 @@
 				CODE_SIGN_ENTITLEMENTS = iOSAuthApp/iOSAuthApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_ASSET_PATHS = iOSAuthApp/Images.xcassets;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSAuthApp/Info.plist;
@@ -381,7 +449,7 @@
 				CODE_SIGN_ENTITLEMENTS = iOSAuthApp/iOSAuthApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_ASSET_PATHS = iOSAuthApp/Images.xcassets;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSAuthApp/Info.plist;
